@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: 30,
+    marginBottom:10,
     borderRadius: 15,
   },
   buttonText: {

@@ -79,69 +79,90 @@ export default function EditScreen() {
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    height: 80%; 
+    height: 85%; 
     color:white;
-    
   } 
   .img {
+    width: auto; 
+    height: auto; 
     max-width: 100%;
-    max-height: 100vh;
-    background-color:black;
+    max-height: 100%; 
   }
   .manual {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items:center;
-    height: 20%;
-  }
-  .choose{
-    height:10%;
-    display: flex;
-    justify-content: center;
-    align-items:center;
-    margin:20px;
+    height: 15%;
+    background-color:white;
   }
   .fileChoose{
-    padding:10px;
-    background-color:orange;
-    border-radius:10px;
+    padding:30px;
+    background-color:pink;
+    border-radius:20px;
     color:white;
+    font-weight:300;
   }
   #imageInput {
     display:none;
   }
   .filter{
     height:90%;
+    width:100%;
     display: flex;
     flex-direction:column;
     justify-content: center;
-    align-items:flex-start;
+    align-items:center;
   }
   .slider{
+    width:75%;
     display: flex;
     justify-content: center;
     align-items:center;
     margin:5px;
+    font-weight:300;
   }
   .line-art {
     filter: url(#line-art) url(#sharpen-filter);
   }
+  .slider input[type="range"] {
+    width: 100%; 
+    height: 7px; 
+    -webkit-appearance: none; 
+    appearance: none;
+    background: #d3d3d3; 
+    outline: none; 
+    border-radius: 5px; 
+}
+.slider input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; 
+    appearance: none;
+    width: 20px; 
+    height: 20px; 
+    background: black; 
+    border-radius: 50%; 
+    cursor: pointer; 
+  }
+.slider input[type="range"]::-moz-range-thumb {
+  width: 20px; 
+  height: 20px; 
+  background: #4caf50; 
+  border-radius: 50%; 
+  cursor: pointer; 
+}
 </style>
     </head>
     <body>
 <div class="container">
   <div class="imgWrap">
-    <img id="selectedImage" src="" alt="Tab to See Changes" class="img line-art">
+    <img id="selectedImage" src="" class="img line-art">
+    <label id="selectImageLabel" class="fileChoose" for="imageInput">Select an image</label>
+    <input type="file" id="imageInput" accept="image/*">
   </div>
   <div class="manual">
-    <div class="choose">
-      <label class="fileChoose" for="imageInput">Choose File</label>
-      <input type="file" id="imageInput" accept="image/*">
-    </div>
     <div class="filter">
-      <div class="slider">Thickness:<input id="gaussianBlurSlider" type="range" min="1" max="50" step="any"></div>
-      <div class="slider">Sharpeness:<input id="sharpenSlider" type="range" min="8.5" max="20" step="any"></div>
+      <div class="slider">Thick: <input id="gaussianBlurSlider" type="range" min="1" max="50" step="any"></div>
+      <div class="slider">Sharpe: <input id="sharpenSlider" type="range" min="8.5" max="20" step="any"></div>
     </div>
   </div> 
 </div>
@@ -188,6 +209,10 @@ export default function EditScreen() {
             reader.onload = function (e) {
               selectedImage.src = e.target.result;
               checkImageSelected();
+              var selectImageLabel = document.querySelector("#selectImageLabel");
+              if (selectImageLabel) {
+                selectImageLabel.style.display = "none";
+              }
             };
             reader.readAsDataURL(file);
           }
@@ -288,6 +313,7 @@ export default function EditScreen() {
       justifyContent: 'center',
       alignItems: 'center',
       marginHorizontal: 30,
+      marginBottom:10,
       borderRadius: 15,
     },
     buttonText: {
