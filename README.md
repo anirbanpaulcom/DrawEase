@@ -2,6 +2,10 @@
 
 DrawEase is an innovative Augmented Reality (AR) drawing application designed to simplify the art of digital drawing. Whether you're a professional artist or just looking to have fun with AR, DrawEase provides you with a range of powerful tools and features to make creating AR artwork effortless.
 
+## Demo Video
+
+[Demo Video](https://github.com/anirbanpaulin/DrawEase/assets/130109852/0296242b-74f2-4c1c-bc4e-1843c45dc122)
+
 ## Table of Contents
 
 - [Features](#features)
